@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.ThongKeBaoCaoController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Thống Kê Báo Cáo" style="-fx-font-size: 24;"/>
+
+    <HBox spacing="10">
+        <Button fx:id="btnThongKeMuonTheoLoai" text="Thống Kê Mượn Theo Loại" />
+        <Button fx:id="btnThongKeTaiLieuTheoTheLoai" text="Thống Kê Tài Liệu Theo Thể Loại" />
+        <Button fx:id="btnTaiLieuQuaHan" text="Tài Liệu Quá Hạn" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Ngày:" />
+        <DatePicker fx:id="datePicker" />
+
+        <Label text="Mã:" />
+        <TextField fx:id="tfMa" />
+
+        <VBox>
+            <RadioButton fx:id="rbNguoiMuon" text="Người mượn" selected="true" />
+            <RadioButton fx:id="rbNhanVien" text="Nhân viên" />
+        </VBox>
+
+        <Button fx:id="btnBaoCaoHoatDong" text="Báo Cáo Hoạt Động" />
+    </HBox>
+
+
+
+    <TableView fx:id="tableViewKetQua">
+    </TableView>
+</VBox>

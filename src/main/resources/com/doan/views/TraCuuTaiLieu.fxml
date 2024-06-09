@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.TraCuuTaiLieuController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Tra Cứu Tài Liệu" style="-fx-font-size: 24;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="tfTuKhoa" promptText="Nhập từ khóa tìm kiếm" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnTimKiem" text="Tìm Kiếm" />
+    </HBox>
+
+    <TableView fx:id="tableViewKetQua">
+        <columns>
+            <TableColumn text="Mã Tài Liệu" fx:id="colMaTaiLieu" />
+            <TableColumn text="Tên Tài Liệu" fx:id="colTenTaiLieu" />
+            <TableColumn text="Tác Giả" fx:id="colTacGia" />
+            <TableColumn text="Ngôn Ngữ" fx:id="colNgonNgu" />
+            <TableColumn text="Thể Loại" fx:id="colTheLoai" />
+            <TableColumn text="Số Lượng" fx:id="colSoLuong" />
+        </columns>
+    </TableView>
+</VBox>
+

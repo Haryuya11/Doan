@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.MuonTraTaiLieuController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Mượn/Trả Tài Liệu" style="-fx-font-size: 24;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Mã Người Mượn:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="tfMaNguoiMuon" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Mã Bản Sao:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="tfMaBanSao" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Ngày Mượn/Trả:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="datePickerNgayMuonTra" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button fx:id="btnMuon" text="Mượn" />
+        <Button fx:id="btnTra" text="Trả" />
+    </HBox>
+
+</VBox>
