@@ -19,10 +19,6 @@ import java.util.ResourceBundle;
 public class TraCuuTaiLieuController implements Initializable {
 
     @FXML
-    private TextField tfTuKhoa;
-    @FXML
-    private Button btnTimKiem;
-    @FXML
     private TableView<TaiLieu> tableViewKetQua;
     @FXML
     private TableColumn<TaiLieu, String> colMaTaiLieu;
@@ -36,8 +32,6 @@ public class TraCuuTaiLieuController implements Initializable {
     private TableColumn<TaiLieu, String> colTheLoai;
     @FXML
     private TableColumn<TaiLieu, Integer> colSoLuong;
-    @FXML
-    private VBox layout;
     private MainController mainController;
     private ObservableList<TaiLieu> taiLieuList = FXCollections.observableArrayList(); // Tạo ObservableList<TaiLieu>
 
@@ -50,6 +44,7 @@ public class TraCuuTaiLieuController implements Initializable {
         colNgonNgu.setCellValueFactory(new PropertyValueFactory<>("ngonNgu"));
         colTheLoai.setCellValueFactory(new PropertyValueFactory<>("tenLoaiTL"));
         colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
+
         tableViewKetQua.setItems(taiLieuList);
         tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -63,5 +58,4 @@ public class TraCuuTaiLieuController implements Initializable {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
-\
 }

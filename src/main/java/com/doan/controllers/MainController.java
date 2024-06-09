@@ -3,10 +3,7 @@ package com.doan.controllers;
 import com.doan.dao.BanSaoDAO;
 import com.doan.dao.NguoiMuonDAO;
 import com.doan.dao.TaiLieuDAO;
-import com.doan.models.BanSao;
-import com.doan.models.NguoiMuon;
-import com.doan.models.TaiLieu;
-import com.doan.models.TaiLieuQuaHan;
+import com.doan.models.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,7 +39,8 @@ public class MainController implements Initializable {
     private ObservableList<TaiLieu> taiLieuList;
     private ObservableList<BanSao> banSaoList;
     private ObservableList<TaiLieuQuaHan> taiLieuQuaHanList;
-
+    private ObservableList<ThongKeMuonTheoLoai> thongKeMuonTheoLoaisList;
+    private ObservableList<ThongKeTaiLieuTheoTheLoai> thongKeTaiLieuTheoTheLoaiList;
     private ObservableList<NguoiMuon> nguoiMuonList;
     private TraCuuTaiLieuController traCuuTaiLieuController;
     private TraCuuBanSaoController traCuuBanSaoController;
@@ -58,7 +56,9 @@ public class MainController implements Initializable {
         taiLieuList = FXCollections.observableArrayList();
         banSaoList = FXCollections.observableArrayList();
         nguoiMuonList = FXCollections.observableArrayList();
-
+        taiLieuQuaHanList = FXCollections.observableArrayList();
+        thongKeMuonTheoLoaisList = FXCollections.observableArrayList();
+        thongKeTaiLieuTheoTheLoaiList = FXCollections.observableArrayList();
         // Khởi tạo các cột cho tableViewKetQua (có thể để trống lúc đầu)
     }
 
@@ -119,7 +119,8 @@ public class MainController implements Initializable {
         TaiLieuQuaHanController taiLieuQuaHanController = loader.getController();
         taiLieuQuaHanController.setMainController(this);
 
-        TableView<TaiLieuQuaHan> tableViewTaiLieu = (TableView<TaiLieuQuaHan>) layout.lookup("#tableViewKetQua");
+        // Khởi tạo các cột của TableView
+        TableView<TaiLieuQuaHan> tableViewTaiLieuQH = (TableView<TaiLieuQuaHan>) layout.lookup("#tableViewKetQua");
         TableColumn<TaiLieuQuaHan, String> colMaSo = new TableColumn<>("Mã Số");
         colMaSo.setCellValueFactory(new PropertyValueFactory<>("maSo"));
         TableColumn<TaiLieuQuaHan, String> colHoTen = new TableColumn<>("Họ Tên");
@@ -137,12 +138,57 @@ public class MainController implements Initializable {
         btnTraCuu.setOnAction(event -> {
             taiLieuQuaHanList.clear();
             taiLieuQuaHanList.addAll(TaiLieuDAO.taiLieuQuaHan());
-            tableViewTaiLieu.setItems(taiLieuQuaHanList);
+            tableViewTaiLieuQH.setItems(taiLieuQuaHanList);
         });
     }
 
+    @FXML
+    private void handleThongKeMuonTheoLoai() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeMuonTheoLoai.fxml"));
+        VBox layout = loader.load();
+        contentArea.getChildren().setAll(layout);
 
+        ThongKeMuonTheoLoaiController thongKeMuonTheoLoaiController = loader.getController();
+        thongKeMuonTheoLoaiController.setMainController(this);
 
+        TableView<ThongKeMuonTheoLoai> tableViewMuonTheoLoai = (TableView<ThongKeMuonTheoLoai>) layout.lookup("#tableViewKetQua");
+        TableColumn<ThongKeMuonTheoLoai,String > colMaLoaiTl = new TableColumn<>("Mã Loại Tài Liệu");
+        colMaLoaiTl.setCellValueFactory(new PropertyValueFactory<>("maLoaiTL"));
+        TableColumn<ThongKeMuonTheoLoai,String > colTenLoaiTl = new TableColumn<>("Tên Loại Tài Liệu");
+        colTenLoaiTl.setCellValueFactory(new PropertyValueFactory<>("tenLoaiTL"));
+        TableColumn<ThongKeMuonTheoLoai,Integer > colSoLuongMuon = new TableColumn<>("Số Lượng Mượn");
+        colSoLuongMuon.setCellValueFactory(new PropertyValueFactory<>("soLuongMuon"));
+
+        Button btnThongKe = (Button) layout.lookup("#btnThongKe");
+        btnThongKe.setOnAction(event -> {
+            thongKeMuonTheoLoaisList.clear();
+            thongKeMuonTheoLoaisList.addAll(TaiLieuDAO.thongKeMuonTheoLoai());
+            tableViewMuonTheoLoai.setItems(thongKeMuonTheoLoaisList);
+        });
+    }
+
+    @FXML
+    private void handleThongKeTaiLieuTheoTheLoai() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeTaiLieuTheoTheLoai.fxml"));
+        VBox layout = loader.load();
+        contentArea.getChildren().setAll(layout);
+
+        ThongKeTaiLieuTheoTheLoaiController thongKeTaiLieuTheoTheLoaiController = loader.getController();
+        thongKeTaiLieuTheoTheLoaiController.setMainController(this);
+
+        TableView<ThongKeTaiLieuTheoTheLoai> tableViewTaiLieuTheoTheLoai = (TableView<ThongKeTaiLieuTheoTheLoai>) layout.lookup("#tableViewKetQua");
+        TableColumn<ThongKeTaiLieuTheoTheLoai, String> colTenLoai = new TableColumn<>("Tên Loại Tài Liệu");
+        colTenLoai.setCellValueFactory(new PropertyValueFactory<>("tenLoaiTL"));
+        TableColumn<ThongKeTaiLieuTheoTheLoai, Integer> colSoLuong = new TableColumn<>("Số Lượng");
+        colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
+
+        Button btnThongKe = (Button) layout.lookup("#btnThongKe");
+        btnThongKe.setOnAction(event -> {
+            thongKeTaiLieuTheoTheLoaiList.clear();
+            thongKeTaiLieuTheoTheLoaiList.addAll(TaiLieuDAO.thongKeTaiLieuTheoTheLoai());
+            tableViewTaiLieuTheoTheLoai.setItems(thongKeTaiLieuTheoTheLoaiList);
+        });
+    }
     @FXML
     private void handleThongTinBanSao() throws IOException {
         // ... (Tương tự như handleThongTinTaiLieu, nhưng tải layout TraCuuBanSao.fxml và thiết lập các cột cho TableView<BanSao>)
@@ -172,7 +218,6 @@ public class MainController implements Initializable {
                 )
         );
 
-//        tableViewBanSao.getColumns().addAll(colMaTaiLieu, colMaBanSao, colTrangThai, colViTri);
 
         // Xử lý tìm kiếm bản sao
         Button btnTimKiem = (Button) layout.lookup("#btnTimKiem");
@@ -186,6 +231,7 @@ public class MainController implements Initializable {
 
 
 
+
     @FXML
     private void handleMuonTraTaiLieu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/MuonTraTaiLieu.fxml"));
@@ -196,34 +242,9 @@ public class MainController implements Initializable {
     }
 
 
-    @FXML
-    private void handleThongKeMuonTheoLoai() throws IOException {
-        // ... (Tương tự như handleThongTinTaiLieu, nhưng tải layout ThongKeMuonTheoLoai.fxml và thiết lập các cột cho TableView<TaiLieu>)
-        if (thongKeMuonTheoLoaiController == null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeMuonTheoLoai.fxml"));
-            VBox layout = loader.load();
-            contentArea.getChildren().setAll(layout);
 
-            thongKeMuonTheoLoaiController = loader.getController();
-            thongKeMuonTheoLoaiController.setMainController(this);
-        } else {
-            contentArea.getChildren().setAll(thongKeMuonTheoLoaiController.getLayout());
-        }
-    }
 
-    @FXML
-    private void handleThongKeTaiLieuTheoTheLoai() throws IOException {
-        if (thongKeTaiLieuTheoTheLoaiController == null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeTaiLieuTheoTheLoai.fxml"));
-            VBox layout = loader.load();
-            contentArea.getChildren().setAll(layout);
 
-            thongKeTaiLieuTheoTheLoaiController = loader.getController();
-            thongKeTaiLieuTheoTheLoaiController.setMainController(this);
-        } else {
-            contentArea.getChildren().setAll(thongKeTaiLieuTheoTheLoaiController.getLayout());
-        }
-    }
 
 
 

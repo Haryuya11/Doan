@@ -3,6 +3,7 @@ package com.doan.dao;
 import com.doan.models.TaiLieu;
 import com.doan.models.TaiLieuQuaHan;
 import com.doan.models.ThongKeMuonTheoLoai;
+import com.doan.models.ThongKeTaiLieuTheoTheLoai;
 import com.doan.utils.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 
 public class TaiLieuDAO {
 
-    public static ObservableList<ThongKeMuonTheoLoai> thongKeMuonTheoLoaiTaiLieu() {
+    public static ObservableList<ThongKeMuonTheoLoai> thongKeMuonTheoLoai() {
         ObservableList<ThongKeMuonTheoLoai> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongKeMuonTheoLoaiTaiLieu()")) {
@@ -36,18 +37,18 @@ public class TaiLieuDAO {
         return ketQua;
     }
 
-    public static ObservableList<TaiLieu> thongKeTaiLieuTheoTheLoai() {
-        ObservableList<TaiLieu> ketQua = FXCollections.observableArrayList();
+    public static ObservableList<ThongKeTaiLieuTheoTheLoai> thongKeTaiLieuTheoTheLoai() {
+        ObservableList<ThongKeTaiLieuTheoTheLoai> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongKeTaiLieuTheoTheLoai()")) {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.isBeforeFirst()) {
                     System.out.println("Không tìm thấy.");
                 } else while (rs.next()) {
-                    TaiLieu taiLieu = new TaiLieu();
-                    taiLieu.setTenLoaiTL(rs.getString("TENLOAITL"));
-                    taiLieu.setSoLuong(rs.getInt("SoLuong"));
-                    ketQua.add(taiLieu);
+                    ThongKeTaiLieuTheoTheLoai thongke = new ThongKeTaiLieuTheoTheLoai();
+                    thongke.setTenLoaiTL(rs.getString("TENLOAITL"));
+                    thongke.setSoLuong(rs.getInt("SoLuong"));
+                    ketQua.add(thongke);
                 }
             }
         } catch (SQLException e) {
@@ -75,7 +76,7 @@ public class TaiLieuDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return ketQua;
     }

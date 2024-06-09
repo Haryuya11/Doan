@@ -2,6 +2,8 @@ package com.doan.controllers;
 
 import com.doan.dao.TaiLieuDAO;
 import com.doan.models.TaiLieu;
+import com.doan.models.ThongKeTaiLieuTheoTheLoai;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,16 +16,15 @@ import java.util.ResourceBundle;
 
 public class ThongKeTaiLieuTheoTheLoaiController implements Initializable {
     @FXML
-    private TableView<TaiLieu> tableViewThongKeTaiLieuTheoTheLoai;
+    private TableView<ThongKeTaiLieuTheoTheLoai> tableViewKetQua;
     @FXML
-    private TableColumn<TaiLieu, String> colTenLoai;
+    private TableColumn<ThongKeTaiLieuTheoTheLoai, String> colTenLoai;
     @FXML
-    private TableColumn<TaiLieu, Integer> colSoLuong;
-    @FXML
-    private VBox layout;
+    private TableColumn<ThongKeTaiLieuTheoTheLoai, Integer> colSoLuong;
+
 
     private MainController mainController;
-
+    private ObservableList<ThongKeTaiLieuTheoTheLoai> thongKeTaiLieuTheoTheLoaiList = FXCollections.observableArrayList(); // Tạo ObservableList<TaiLieu>
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Khởi tạo các cột
@@ -31,15 +32,15 @@ public class ThongKeTaiLieuTheoTheLoaiController implements Initializable {
         colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
 
         // Lấy dữ liệu và hiển thị
-        ObservableList<TaiLieu> data = TaiLieuDAO.thongKeTaiLieuTheoTheLoai();
-        tableViewThongKeTaiLieuTheoTheLoai.setItems(data);
+        tableViewKetQua.setItems(thongKeTaiLieuTheoTheLoaiList);
+        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
+    public TableView<ThongKeTaiLieuTheoTheLoai> getTableViewKetQua() {
+        return tableViewKetQua;
+    }
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    public VBox getLayout() {
-        return layout;
-    }
 }

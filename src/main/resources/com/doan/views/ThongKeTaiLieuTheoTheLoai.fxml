@@ -6,11 +6,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 <VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.ThongKeTaiLieuTheoTheLoaiController">
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
 
     <Label text="Thống Kê Tài Liệu Theo Thể Loại" style="-fx-font-size: 24;"/>
 
+    <HBox spacing="10">
+        <Button fx:id="btnThongKe" text="Thống kê" />
+    </HBox>
     <TableView fx:id="tableViewKetQua">
         <columns>
             <TableColumn text="Thể Loại" fx:id="colTenLoai"/>

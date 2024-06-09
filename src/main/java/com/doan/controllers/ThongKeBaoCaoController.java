@@ -3,10 +3,7 @@ package com.doan.controllers;
 import com.doan.dao.NhanVienDAO;
 import com.doan.dao.NguoiMuonDAO;
 import com.doan.dao.TaiLieuDAO;
-import com.doan.models.BaoCaoHoatDong;
-import com.doan.models.TaiLieu;
-import com.doan.models.TaiLieuQuaHan;
-import com.doan.models.ThongKeMuonTheoLoai;
+import com.doan.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,6 +46,7 @@ public class ThongKeBaoCaoController implements Initializable {
     private ObservableList<TaiLieuQuaHan> taiLieuQuaHanList = FXCollections.observableArrayList();
     private ObservableList<BaoCaoHoatDong> baoCaoList = FXCollections.observableArrayList();
 
+    private ObservableList<ThongKeTaiLieuTheoTheLoai> thongKeTaiLieuTheoTheLoaiList = FXCollections.observableArrayList();
     private MainController mainController; // Thêm thuộc tính mainController
 
     public void setMainController(MainController mainController) {
@@ -80,26 +78,26 @@ public class ThongKeBaoCaoController implements Initializable {
         tableViewKetQua.getColumns().addAll(colMaLoai, colTenLoai, colSoLuongMuon);
 
         thongKeMuonTheoLoaiList.clear();
-        thongKeMuonTheoLoaiList.addAll(TaiLieuDAO.thongKeMuonTheoLoaiTaiLieu());
+        thongKeMuonTheoLoaiList.addAll(TaiLieuDAO.thongKeMuonTheoLoai());
         tableViewKetQua.setItems(thongKeMuonTheoLoaiList);
     }
 
-    @FXML
-    private void handleThongKeTaiLieuTheoTheLoai() {
-        tableViewKetQua.getColumns().clear();
-        tableViewKetQua.setItems(null);
-
-        TableColumn<TaiLieu, String> colTenLoai = new TableColumn<>("Thể Loại");
-        colTenLoai.setCellValueFactory(new PropertyValueFactory<>("tenLoaiTL"));
-        TableColumn<TaiLieu, Integer> colSoLuong = new TableColumn<>("Số Lượng");
-        colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
-
-        tableViewKetQua.getColumns().addAll(colTenLoai, colSoLuong);
-
-        taiLieuList.clear();
-        taiLieuList.addAll(TaiLieuDAO.thongKeTaiLieuTheoTheLoai());
-        tableViewKetQua.setItems(taiLieuList);
-    }
+//    @FXML
+//    private void handleThongKeTaiLieuTheoTheLoai() {
+//        tableViewKetQua.getColumns().clear();
+//        tableViewKetQua.setItems(null);
+//
+//        TableColumn<ThongKeTaiLieuTheoTheLoai, String> colTenLoai = new TableColumn<>("Thể Loại");
+//        colTenLoai.setCellValueFactory(new PropertyValueFactory<>("tenLoaiTL"));
+//        TableColumn<ThongKeTaiLieuTheoTheLoai, Integer> colSoLuong = new TableColumn<>("Số Lượng");
+//        colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
+//
+//        tableViewKetQua.getColumns().addAll(colTenLoai, colSoLuong);
+//
+//        taiLieuList.clear();
+//        taiLieuList.addAll(TaiLieuDAO.thongKeTaiLieuTheoTheLoai());
+//        tableViewKetQua.setItems(taiLieuList);
+//    }
 
     @FXML
     private void handleTaiLieuQuaHan() {

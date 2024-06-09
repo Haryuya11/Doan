@@ -59,16 +59,5 @@ public class TraCuuBanSaoController implements Initializable {
 //        trangThaiComboBox.setValue("Tất cả"); // Mặc định là "Tất cả"
     }
 
-    @FXML
-    private void handleTimKiem() {
-        String maTaiLieu = tfMaTaiLieu.getText();
-//        String trangThai = trangThaiComboBox.getValue();
 
-
-        banSaoList.clear();
-        banSaoList.addAll(BanSaoDAO.layThongTinBanSao(maTaiLieu, ""));
-        tableViewKetQua.setItems(banSaoList);
-        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-    }
 }
