@@ -6,6 +6,7 @@ import com.doan.dao.TaiLieuDAO;
 import com.doan.models.BanSao;
 import com.doan.models.NguoiMuon;
 import com.doan.models.TaiLieu;
+import com.doan.models.TaiLieuQuaHan;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,11 +39,18 @@ public class MainController implements Initializable {
     @FXML
     private TableView<TaiLieu> tableViewKetQua;
 
+    private ObservableList<TaiLieu> taiLieuList;
     private ObservableList<BanSao> banSaoList;
-    private ObservableList<NguoiMuon> nguoiMuonList;
+    private ObservableList<TaiLieuQuaHan> taiLieuQuaHanList;
 
+    private ObservableList<NguoiMuon> nguoiMuonList;
     private TraCuuTaiLieuController traCuuTaiLieuController;
-    private ObservableList<TaiLieu> taiLieuList = FXCollections.observableArrayList();
+    private TraCuuBanSaoController traCuuBanSaoController;
+    private MuonTraTaiLieuController muonTraTaiLieuController;
+    private ThongKeMuonTheoLoaiController thongKeMuonTheoLoaiController;
+    private ThongKeTaiLieuTheoTheLoaiController thongKeTaiLieuTheoTheLoaiController;
+    private TaiLieuQuaHanController taiLieuQuaHanController;
+    private BaoCaoHoatDongController baoCaoHoatDongController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -102,6 +110,38 @@ public class MainController implements Initializable {
         });
     }
 
+    @FXML
+    private void handleTaiLieuQuaHan() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/TaiLieuQuaHan.fxml"));
+        VBox layout = loader.load();
+        contentArea.getChildren().setAll(layout);
+
+        TaiLieuQuaHanController taiLieuQuaHanController = loader.getController();
+        taiLieuQuaHanController.setMainController(this);
+
+        TableView<TaiLieuQuaHan> tableViewTaiLieu = (TableView<TaiLieuQuaHan>) layout.lookup("#tableViewKetQua");
+        TableColumn<TaiLieuQuaHan, String> colMaSo = new TableColumn<>("Mã Số");
+        colMaSo.setCellValueFactory(new PropertyValueFactory<>("maSo"));
+        TableColumn<TaiLieuQuaHan, String> colHoTen = new TableColumn<>("Họ Tên");
+        colHoTen.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
+        TableColumn<TaiLieuQuaHan, String> colMaTaiLieu = new TableColumn<>("Mã Tài Liệu");
+        colMaTaiLieu.setCellValueFactory(new PropertyValueFactory<>("maTaiLieu"));
+        TableColumn<TaiLieuQuaHan, String> colTenTaiLieu = new TableColumn<>("Tên Tài Liệu");
+        colTenTaiLieu.setCellValueFactory(new PropertyValueFactory<>("tenTaiLieu"));
+        TableColumn<TaiLieuQuaHan, String> colHanTra = new TableColumn<>("Hạn Trả");
+        colHanTra.setCellValueFactory(new PropertyValueFactory<>("hanTra"));
+        TableColumn<TaiLieuQuaHan, Integer> colSoNgayQuaHan = new TableColumn<>("Số Ngày Quá Hạn");
+        colSoNgayQuaHan.setCellValueFactory(new PropertyValueFactory<>("soNgayQuaHan"));
+
+        Button btnTraCuu = (Button) layout.lookup("#btnTraCuu");
+        btnTraCuu.setOnAction(event -> {
+            taiLieuQuaHanList.clear();
+            taiLieuQuaHanList.addAll(TaiLieuDAO.taiLieuQuaHan());
+            tableViewTaiLieu.setItems(taiLieuQuaHanList);
+        });
+    }
+
+
 
     @FXML
     private void handleThongTinBanSao() throws IOException {
@@ -144,6 +184,8 @@ public class MainController implements Initializable {
         });
     }
 
+
+
     @FXML
     private void handleMuonTraTaiLieu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/MuonTraTaiLieu.fxml"));
@@ -153,13 +195,62 @@ public class MainController implements Initializable {
         muonTraTaiLieuController.setMainController(this);
     }
 
+
+    @FXML
+    private void handleThongKeMuonTheoLoai() throws IOException {
+        // ... (Tương tự như handleThongTinTaiLieu, nhưng tải layout ThongKeMuonTheoLoai.fxml và thiết lập các cột cho TableView<TaiLieu>)
+        if (thongKeMuonTheoLoaiController == null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeMuonTheoLoai.fxml"));
+            VBox layout = loader.load();
+            contentArea.getChildren().setAll(layout);
+
+            thongKeMuonTheoLoaiController = loader.getController();
+            thongKeMuonTheoLoaiController.setMainController(this);
+        } else {
+            contentArea.getChildren().setAll(thongKeMuonTheoLoaiController.getLayout());
+        }
+    }
+
+    @FXML
+    private void handleThongKeTaiLieuTheoTheLoai() throws IOException {
+        if (thongKeTaiLieuTheoTheLoaiController == null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeTaiLieuTheoTheLoai.fxml"));
+            VBox layout = loader.load();
+            contentArea.getChildren().setAll(layout);
+
+            thongKeTaiLieuTheoTheLoaiController = loader.getController();
+            thongKeTaiLieuTheoTheLoaiController.setMainController(this);
+        } else {
+            contentArea.getChildren().setAll(thongKeTaiLieuTheoTheLoaiController.getLayout());
+        }
+    }
+
+
+
+    @FXML
+    private void handleBaoCaoHoatDong() throws IOException {
+        if (baoCaoHoatDongController == null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/BaoCaoHoatDong.fxml"));
+            VBox layout = loader.load();
+            contentArea.getChildren().setAll(layout);
+
+            baoCaoHoatDongController = loader.getController();
+            baoCaoHoatDongController.setMainController(this);
+        } else {
+            contentArea.getChildren().setAll(baoCaoHoatDongController.getLayout());
+        }
+    }
+
+
 //    @FXML
 //    private void handleThongKeBaoCao() throws IOException {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doan/views/ThongKeBaoCao.fxml"));
 //        VBox layout = loader.load();
 //        contentArea.getChildren().setAll(layout);
-//
 //        ThongKeBaoCaoController thongKeBaoCaoController = loader.getController();
 //        thongKeBaoCaoController.setMainController(this);
+//        thongKeBaoCaoController.setTableViewKetQua(tableViewKetQua); // Thêm dòng này
+//
 //    }
+
 }

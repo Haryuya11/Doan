@@ -55,14 +55,6 @@ public class TraCuuTaiLieuController implements Initializable {
 
     }
 
-    @FXML
-    private void handleTimKiem() {
-        String tuKhoa = tfTuKhoa.getText();
-        taiLieuList.clear();
-        taiLieuList.addAll(TaiLieuDAO.timKiemTaiLieu(tuKhoa));
-//        tableViewKetQua.setItems(taiLieuList); // Cập nhật dữ liệu cho TableView
-    }
-
     // Thêm phương thức getTableViewKetQua
     public TableView<TaiLieu> getTableViewKetQua() {
         return tableViewKetQua;
@@ -71,8 +63,5 @@ public class TraCuuTaiLieuController implements Initializable {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
-
-    public void setTaiLieuList(ObservableList<TaiLieu> taiLieuList) {
-        this.taiLieuList = taiLieuList;
-    }
+\
 }

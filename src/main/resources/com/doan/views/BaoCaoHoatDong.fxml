@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.BaoCaoHoatDongController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Báo Cáo Hoạt Động" style="-fx-font-size: 24;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Ngày:" />
+        <DatePicker fx:id="datePicker" />
+
+        <Label text="Mã:" />
+        <TextField fx:id="tfMa" />
+
+        <VBox fx:id="toggleGroup">
+            <RadioButton fx:id="rbNguoiMuon" text="Người mượn" selected="true" />
+            <RadioButton fx:id="rbNhanVien" text="Nhân viên" />
+        </VBox>
+
+        <Button fx:id="btnBaoCaoHoatDong" text="Xem Báo Cáo" />
+    </HBox>
+
+    <TableView fx:id="tableViewBaoCaoHoatDong">
+        <columns>
+            <TableColumn text="Mã Nhân Viên" fx:id="colMaNhanVien"/>
+            <TableColumn text="Tên Nhân Viên" fx:id="colTenNhanVien" />
+            <TableColumn text="Mã Người Mượn" fx:id="colMaNguoiMuon"/>
+            <TableColumn text="Tên Người Mượn" fx:id="colTenNguoiMuon"/>
+            <TableColumn text="Mã Tài Liệu" fx:id="colMaTaiLieu"/>
+            <TableColumn text="Tên Tài Liệu" fx:id="colTenTaiLieu" />
+            <TableColumn text="Mã Bản Sao" fx:id="colMaBanSao" />
+            <TableColumn text="Hoạt Động" fx:id="colHoatDong" />
+            <TableColumn text="Mã Phiếu Phạt" fx:id="colMaPhieuPhat"/>
+            <TableColumn text="Số Tiền Phạt" fx:id="colSoTienPhat" />
+            <TableColumn text="Lý Do Phạt" fx:id="colLyDoPhat"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -19,7 +19,9 @@ public class TaiLieuDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongKeMuonTheoLoaiTaiLieu()")) {
             try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
+                if (!rs.isBeforeFirst()) {
+                    System.out.println("Không tìm thấy nào.");
+                } else while (rs.next()) {
                     ThongKeMuonTheoLoai thongKe = new ThongKeMuonTheoLoai();
                     thongKe.setMaLoaiTL(rs.getString("MALOAITL"));
                     thongKe.setTenLoaiTL(rs.getString("TENLOAITL"));
@@ -39,7 +41,9 @@ public class TaiLieuDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongKeTaiLieuTheoTheLoai()")) {
             try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
+                if (!rs.isBeforeFirst()) {
+                    System.out.println("Không tìm thấy.");
+                } else while (rs.next()) {
                     TaiLieu taiLieu = new TaiLieu();
                     taiLieu.setTenLoaiTL(rs.getString("TENLOAITL"));
                     taiLieu.setSoLuong(rs.getInt("SoLuong"));
@@ -57,7 +61,9 @@ public class TaiLieuDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM TaiLieuQuaHan()")) {
             try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
+                if (!rs.isBeforeFirst()) {
+                    System.out.println("Không tìm thấy.");
+                } else while (rs.next()) {
                     TaiLieuQuaHan taiLieuQuaHan = new TaiLieuQuaHan();
                     taiLieuQuaHan.setMaSo(rs.getString("MASO"));
                     taiLieuQuaHan.setHoTen(rs.getString("HOTEN"));
@@ -73,6 +79,7 @@ public class TaiLieuDAO {
         }
         return ketQua;
     }
+
     public static ObservableList<TaiLieu> timKiemTaiLieu(String tuKhoa) {
         ObservableList<TaiLieu> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();

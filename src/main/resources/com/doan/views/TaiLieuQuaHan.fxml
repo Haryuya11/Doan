@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.TaiLieuQuaHanController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Tài Liệu Quá Hạn" style="-fx-font-size: 24;"/>
+
+    <HBox spacing="10">
+        <Button fx:id="btnTraCuu" text="Tra cứu" />
+    </HBox>
+    <TableView fx:id="tableViewKetQua">
+        <columns>
+            <TableColumn text="Mã Số" fx:id="colMaSo"/>
+            <TableColumn text="Họ Tên" fx:id="colHoTen"/>
+            <TableColumn text="Mã Tài Liệu" fx:id="colMaTaiLieu"/>
+            <TableColumn text="Tên Tài Liệu" fx:id="colTenTaiLieu"/>
+            <TableColumn text="Hạn Trả" fx:id="colHanTra"/>
+            <TableColumn text="Số Ngày Quá Hạn" fx:id="colSoNgayQuaHan"/>
+        </columns>
+    </TableView>
+</VBox>
+

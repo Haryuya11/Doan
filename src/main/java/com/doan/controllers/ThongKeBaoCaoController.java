@@ -179,4 +179,5 @@ public class ThongKeBaoCaoController implements Initializable {
         tableViewKetQua.setItems((ObservableList<Object>) items); // Ép kiểu tại đây
     }
 
+
 }
