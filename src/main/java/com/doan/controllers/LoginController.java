@@ -38,8 +38,7 @@ public class LoginController {
         }
 
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(
-                     "SELECT * FROM NHANVIEN WHERE MANV = ?")) {
+             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM NHANVIEN WHERE MANV = ?")) {
 
             stmt.setString(1, maNhanVien);
 
