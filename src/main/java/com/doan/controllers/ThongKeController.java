@@ -34,14 +34,17 @@ public class ThongKeController implements Initializable {
 
     }
 
-    public void thongKeTatca() {
+    @FXML
+    private void thongKeTatca() {
         thongKeList.clear();
         thongKeList.addAll(TaiLieuDAO.thongKeTaiLieuTheoTheLoai());
         tableViewKetQua.setItems(thongKeList);
         tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
     }
-    public void thongKeMuon() {
+
+    @FXML
+    private void thongKeMuon() {
         thongKeList.clear();
         thongKeList.addAll(TaiLieuDAO.thongKeMuonTheoLoai());
         tableViewKetQua.setItems(thongKeList);

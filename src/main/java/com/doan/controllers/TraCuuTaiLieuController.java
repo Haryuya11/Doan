@@ -50,7 +50,8 @@ public class TraCuuTaiLieuController implements Initializable {
 
     }
 
-    public void traCuu(){
+    @FXML
+    private void traCuu(){
         String tuKhoa = tfTuKhoa.getText();
         taiLieuList.clear();
         taiLieuList.addAll(TaiLieuDAO.timKiemTaiLieu(tuKhoa));

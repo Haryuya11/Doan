@@ -31,6 +31,9 @@
         <Button text="Tài liệu quá hạn" onAction="#handleTaiLieuQuaHan" style="-fx-font-size: 16; padding: 10px 20px;"/>
         <Button text="Thống kê" onAction="#handleThongKe" style="-fx-font-size: 16; padding: 10px 20px;"/>
         <Button text="Báo cáo hoạt động" onAction="#handleBaoCaoHoatDong" style="-fx-font-size: 16; padding: 10px 20px;"/>
+        <Button text="Lịch sử người mượn" onAction="#handleLichSuNguoiMuon" style="-fx-font-size: 16; padding: 10px 20px;"/>
+        <Button text="Tra cứu phiếu phạt" onAction="#handleTraCuuPhieuPhat" style="-fx-font-size: 16; padding: 10px 20px;"/>
+
     </HBox>
 
     <VBox fx:id="contentArea" alignment="CENTER" spacing="20">

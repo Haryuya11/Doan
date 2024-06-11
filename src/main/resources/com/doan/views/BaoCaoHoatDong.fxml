@@ -22,7 +22,7 @@
             <RadioButton fx:id="rbNhanVien" text="Nhân viên" />
         </VBox>
 
-            <Button fx:id="btnBaoCao" text="Xem Báo Cáo" />
+            <Button fx:id="btnBaoCao" text="Xem Báo Cáo" onAction="#handleBaoCao" />
         </HBox>
 
     <TableView fx:id="tableViewKetQua">

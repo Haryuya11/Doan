@@ -25,7 +25,7 @@ public class MuonTraTaiLieuController {
     }
 
     @FXML
-    public void handleMuonTaiLieu() {
+    private void handleMuonTaiLieu() {
         String maNguoiMuon = tfMaNguoiMuon.getText();
         String maBanSao = tfMaBanSao.getText();
         LocalDate ngayMuonTra = datePickerNgayMuonTra.getValue();
@@ -41,7 +41,7 @@ public class MuonTraTaiLieuController {
     }
 
     @FXML
-    public void handleTraTaiLieu() {
+    private void handleTraTaiLieu() {
         String maNguoiMuon = tfMaNguoiMuon.getText();
         String maBanSao = tfMaBanSao.getText();
         LocalDate ngayMuonTra = datePickerNgayMuonTra.getValue();
@@ -53,7 +53,6 @@ public class MuonTraTaiLieuController {
             alert.showAndWait();
             return;
         }
-        // Gọi procedure TRATAILIEU từ PhieuTraDAO
         MuonTraDAO.traTaiLieu(maNguoiMuon, maBanSao, ngayMuonTra);
     }
 }

@@ -10,23 +10,27 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.ComboBox?>
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.TraCuuBanSaoController">
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.LichSuNguoiMuonController">
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
 
-    <Label text="Tra Cứu Bản Sao" style="-fx-font-size: 24;"/>
+    <Label text="Tra Cứu Lịch sử" style="-fx-font-size: 24;"/>
 
     <HBox spacing="10">
-        <TextField fx:id="tfMaTaiLieu" promptText="Nhập mã tài liệu" HBox.hgrow="ALWAYS"/>
-        <ComboBox fx:id="trangThaiComboBox" promptText="Trạng thái" />
+        <TextField fx:id="tfMaSo" promptText="Nhập mã người mượn" HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="tinhTrangComboBox" promptText="Tình trạng" />
         <Button fx:id="btnTimKiem" text="Tìm Kiếm" onAction="#traCuu"/>
     </HBox>
 
     <TableView fx:id="tableViewKetQua">
         <columns>
             <TableColumn text="Mã Tài Liệu" fx:id="colMaTaiLieu" />
+            <TableColumn text="Tên Tài Liệu" fx:id="colTenTaiLieu" />
             <TableColumn text="Mã Bản Sao" fx:id="colMaBanSao" />
-            <TableColumn text="Trạng Thái" fx:id="colTrangThai" />
-            <TableColumn text="Vị Trí" fx:id="colViTri" />
+            <TableColumn text="Tình trạng" fx:id="colTinhTrang" />
+            <TableColumn text="Ngày mượn" fx:id="colNgayMuon" />
+            <TableColumn text="Hạn trả" fx:id="colHanTra" />
+            <TableColumn text="Ngày trả" fx:id="colNgayTra" />
+
         </columns>
     </TableView>
 

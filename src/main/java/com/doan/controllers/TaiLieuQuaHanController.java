@@ -48,7 +48,8 @@ public class TaiLieuQuaHanController implements Initializable {
 
     }
 
-    public void loadData() {
+    @FXML
+    private void traCuu() {
         taiLieuQuaHanList.clear();
         taiLieuQuaHanList.addAll(TaiLieuDAO.taiLieuQuaHan());
         tableViewKetQua.setItems(taiLieuQuaHanList);

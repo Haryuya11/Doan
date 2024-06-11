@@ -80,7 +80,8 @@ public class BaoCaoHoatDongController implements Initializable {
 
     }
 
-    public void handleBaoCao(){
+    @FXML
+    private void handleBaoCao(){
         LocalDate ngay = datePicker.getValue();
         String ma = tfMa.getText();
 

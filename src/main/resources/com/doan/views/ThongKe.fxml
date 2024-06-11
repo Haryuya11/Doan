@@ -14,8 +14,8 @@
     <Label text="Thống Kê" style="-fx-font-size: 24;"/>
 
     <HBox spacing="10">
-        <Button fx:id="btnThongKeTatCaTL" text="Thống kê tất cả tài liệu" />
-        <Button fx:id="btnThongKeTLMuon" text="Thống kê tài liệu được mượn" />
+        <Button fx:id="btnThongKeTatCaTL" text="Thống kê tất cả tài liệu" onAction="#thongKeTatca"/>
+        <Button fx:id="btnThongKeTLMuon" text="Thống kê tài liệu được mượn" onAction="#thongKeMuon" />
     </HBox>
     <TableView fx:id="tableViewKetQua">
         <columns>

@@ -55,7 +55,8 @@ public class TraCuuBanSaoController implements Initializable {
         tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
-    public void traCuu(){
+    @FXML
+    private void traCuu(){
         String maTaiLieu = tfMaTaiLieu.getText();
         String trangThai = trangThaiComboBox.getValue();
         if(trangThai.equals("Tất cả")){

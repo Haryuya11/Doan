@@ -4,8 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.MuonTraTaiLieuController">
-    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.doan.controllers.MuonTraTaiLieuController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
     <Label text="Mượn/Trả Tài Liệu" style="-fx-font-size: 24;"/>
 
@@ -21,8 +24,8 @@
     </GridPane>
 
     <HBox spacing="10">
-        <Button fx:id="btnMuon" text="Mượn" />
-        <Button fx:id="btnTra" text="Trả" />
+        <Button fx:id="btnMuon" text="Mượn" onAction="#handleMuonTaiLieu"/>
+        <Button fx:id="btnTra" text="Trả" onAction="#handleTraTaiLieu"/>
     </HBox>
 
 </VBox>

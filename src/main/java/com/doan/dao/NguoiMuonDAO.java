@@ -12,12 +12,14 @@ import java.time.LocalDate;
 
 public class NguoiMuonDAO {
 
+    // ... (trong NguoiMuonDAO.java)
+
     public static ObservableList<PhieuMuon> lichSuMuonSachCuaNguoiMuon(String maSo, String tinhTrang) {
         ObservableList<PhieuMuon> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM LichSuMuonSachCuaNguoiMuon(?, ?)")) {
             stmt.setString(1, maSo);
-            stmt.setString(2, tinhTrang);
+            stmt.setNString(2, tinhTrang); // Đảm bảo bạn đang xử lý trangThai đúng
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     PhieuMuon phieuMuon = new PhieuMuon();
@@ -26,12 +28,17 @@ public class NguoiMuonDAO {
                     phieuMuon.setMaBanSao(rs.getString("MABANS"));
                     phieuMuon.setTinhTrang(rs.getString("TINHTRANG"));
                     phieuMuon.setNgayMuon(rs.getDate("NGAYMUON").toLocalDate());
-                    if (rs.getDate("HANTRA") != null) {
-                        phieuMuon.setHanTra(rs.getDate("HANTRA").toLocalDate());
+
+                    // Kiểm tra nếu HANTRA là NULL
+                    Date hanTraDate = rs.getDate("HANTRA");
+                    if (hanTraDate != null) {
+                        phieuMuon.setHanTra(hanTraDate.toLocalDate());
                     }
-                    if (rs.getDate("NGAYTRA") != null) {
-                        phieuMuon.setNgayTra(rs.getDate("NGAYTRA").toLocalDate());
+                    Date ngayTraDate = rs.getDate("NGAYTRA"); // Kiểm tra nếu NGAYTRA là NULL
+                    if (ngayTraDate != null) {
+                        phieuMuon.setNgayTra(ngayTraDate.toLocalDate());
                     }
+
                     ketQua.add(phieuMuon);
                 }
             }
@@ -41,10 +48,10 @@ public class NguoiMuonDAO {
         return ketQua;
     }
 
-    public static NguoiMuon thongTinPhatSinhVien(String maSo) {
+    public static NguoiMuon thongTinPhatNguoiMuon(String maSo) {
         NguoiMuon nguoiMuon = null;
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongTinPhatSinhVien(?)")) {
+             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongTinPhatNguoiMuon(?)")) {
             stmt.setString(1, maSo);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -59,6 +66,7 @@ public class NguoiMuonDAO {
         }
         return nguoiMuon;
     }
+
     public static ObservableList<BaoCaoHoatDong> baoCaoHoatDongNguoiMuonTrongNgay(String maSo, LocalDate ngay) throws SQLException {
         ObservableList<BaoCaoHoatDong> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();
