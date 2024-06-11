@@ -1,14 +1,15 @@
 package com.doan.models;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ThongKeTaiLieuTheoTheLoai {
-private StringProperty tenLoaiTL;
+public class ThongKe {
+    private StringProperty tenLoaiTL;
     private IntegerProperty soLuong;
 
-    public ThongKeTaiLieuTheoTheLoai() {
+    public ThongKe() {
         this.tenLoaiTL = new SimpleStringProperty();
         this.soLuong = new SimpleIntegerProperty();
     }

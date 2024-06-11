@@ -1,11 +1,12 @@
 package com.doan.controllers;
 
-import com.doan.dao.PhieuMuonDAO;
-import com.doan.dao.PhieuTraDAO;
+import com.doan.dao.MuonTraDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+
 import java.time.LocalDate;
 
 public class MuonTraTaiLieuController {
@@ -15,10 +16,6 @@ public class MuonTraTaiLieuController {
     private TextField tfMaBanSao;
     @FXML
     private DatePicker datePickerNgayMuonTra;
-    @FXML
-    private Button btnMuon;
-    @FXML
-    private Button btnTra;
 
 
     private MainController mainController; // Thêm thuộc tính mainController
@@ -26,23 +23,37 @@ public class MuonTraTaiLieuController {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
     @FXML
-    private void handleMuonTaiLieu() {
+    public void handleMuonTaiLieu() {
         String maNguoiMuon = tfMaNguoiMuon.getText();
         String maBanSao = tfMaBanSao.getText();
         LocalDate ngayMuonTra = datePickerNgayMuonTra.getValue();
-
-        // Gọi procedure MUONTAILIEU từ PhieuMuonDAO
-        PhieuMuonDAO.muonTaiLieu(maNguoiMuon, maBanSao, ngayMuonTra);
+        if (ngayMuonTra == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng chọn ngày .");
+            alert.showAndWait();
+            return;
+        }
+        MuonTraDAO.muonTaiLieu(maNguoiMuon, maBanSao, ngayMuonTra);
     }
 
     @FXML
-    private void handleTraTaiLieu() {
+    public void handleTraTaiLieu() {
         String maNguoiMuon = tfMaNguoiMuon.getText();
         String maBanSao = tfMaBanSao.getText();
         LocalDate ngayMuonTra = datePickerNgayMuonTra.getValue();
-
+        if (ngayMuonTra == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng chọn ngày .");
+            alert.showAndWait();
+            return;
+        }
         // Gọi procedure TRATAILIEU từ PhieuTraDAO
-        PhieuTraDAO.traTaiLieu(maNguoiMuon, maBanSao, ngayMuonTra);
+        MuonTraDAO.traTaiLieu(maNguoiMuon, maBanSao, ngayMuonTra);
     }
 }

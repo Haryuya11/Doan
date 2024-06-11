@@ -19,8 +19,6 @@ public class TraCuuBanSaoController implements Initializable {
     @FXML
     private TextField tfMaTaiLieu;
     @FXML
-    private Button btnTimKiem;
-    @FXML
     private TableView<BanSao> tableViewKetQua;
     @FXML
     private TableColumn<BanSao, String> colMaTaiLieu;
@@ -30,8 +28,8 @@ public class TraCuuBanSaoController implements Initializable {
     private TableColumn<BanSao, String> colTrangThai;
     @FXML
     private TableColumn<BanSao, String> colViTri;
-//    @FXML
-//    private ComboBox<String> trangThaiComboBox;
+    @FXML
+    private ComboBox<String> trangThaiComboBox;
 
     private ObservableList<BanSao> banSaoList = FXCollections.observableArrayList();
     private MainController mainController; // Thêm thuộc tính mainController
@@ -52,12 +50,24 @@ public class TraCuuBanSaoController implements Initializable {
                                 cellData.getValue().getSoNgan()
                 )
         );
-
-//        tableViewKetQua.setItems(banSaoList);
-//        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-//        trangThaiComboBox.getItems().addAll("Tất cả", "Có sẵn", "Đang được mượn", "Đã làm mất");
-//        trangThaiComboBox.setValue("Tất cả"); // Mặc định là "Tất cả"
+        trangThaiComboBox.getItems().addAll("Tất cả", "Có sẵn", "Đang được mượn", "Đã mất");
+        trangThaiComboBox.setValue("Tất cả"); // Mặc định là Tất cả
+        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
+    public void traCuu(){
+        String maTaiLieu = tfMaTaiLieu.getText();
+        String trangThai = trangThaiComboBox.getValue();
+        if(trangThai.equals("Tất cả")){
+            trangThai = null;
+        }
+        banSaoList.clear();
+        banSaoList.addAll(BanSaoDAO.layThongTinBanSao(maTaiLieu, trangThai));
+        tableViewKetQua.setItems(banSaoList);
+        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+    public TableView<BanSao> getTableViewKetQua() {
+        return tableViewKetQua;
+    }
 
 }

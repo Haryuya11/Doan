@@ -2,8 +2,7 @@ package com.doan.dao;
 
 import com.doan.models.TaiLieu;
 import com.doan.models.TaiLieuQuaHan;
-import com.doan.models.ThongKeMuonTheoLoai;
-import com.doan.models.ThongKeTaiLieuTheoTheLoai;
+import com.doan.models.ThongKe;
 import com.doan.utils.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,18 +14,17 @@ import java.sql.SQLException;
 
 public class TaiLieuDAO {
 
-    public static ObservableList<ThongKeMuonTheoLoai> thongKeMuonTheoLoai() {
-        ObservableList<ThongKeMuonTheoLoai> ketQua = FXCollections.observableArrayList();
+    public static ObservableList<ThongKe> thongKeMuonTheoLoai() {
+        ObservableList<ThongKe> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongKeMuonTheoLoaiTaiLieu()")) {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.isBeforeFirst()) {
                     System.out.println("Không tìm thấy nào.");
                 } else while (rs.next()) {
-                    ThongKeMuonTheoLoai thongKe = new ThongKeMuonTheoLoai();
-                    thongKe.setMaLoaiTL(rs.getString("MALOAITL"));
+                    ThongKe thongKe = new ThongKe();
                     thongKe.setTenLoaiTL(rs.getString("TENLOAITL"));
-                    thongKe.setSoLuongMuon(rs.getInt("SoLuongMuon")); // Đảm bảo tên cột khớp với tên thuộc tính
+                    thongKe.setSoLuong(rs.getInt("SoLuong")); // Đảm bảo tên cột khớp với tên thuộc tính
                     ketQua.add(thongKe);
                 }
             }
@@ -37,15 +35,15 @@ public class TaiLieuDAO {
         return ketQua;
     }
 
-    public static ObservableList<ThongKeTaiLieuTheoTheLoai> thongKeTaiLieuTheoTheLoai() {
-        ObservableList<ThongKeTaiLieuTheoTheLoai> ketQua = FXCollections.observableArrayList();
+    public static ObservableList<ThongKe> thongKeTaiLieuTheoTheLoai() {
+        ObservableList<ThongKe> ketQua = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ThongKeTaiLieuTheoTheLoai()")) {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.isBeforeFirst()) {
                     System.out.println("Không tìm thấy.");
                 } else while (rs.next()) {
-                    ThongKeTaiLieuTheoTheLoai thongke = new ThongKeTaiLieuTheoTheLoai();
+                    ThongKe thongke = new ThongKe();
                     thongke.setTenLoaiTL(rs.getString("TENLOAITL"));
                     thongke.setSoLuong(rs.getInt("SoLuong"));
                     ketQua.add(thongke);

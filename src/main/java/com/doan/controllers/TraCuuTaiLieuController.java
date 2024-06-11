@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 public class TraCuuTaiLieuController implements Initializable {
 
     @FXML
+    private TextField tfTuKhoa;
+    @FXML
     private TableView<TaiLieu> tableViewKetQua;
     @FXML
     private TableColumn<TaiLieu, String> colMaTaiLieu;
@@ -44,10 +46,16 @@ public class TraCuuTaiLieuController implements Initializable {
         colNgonNgu.setCellValueFactory(new PropertyValueFactory<>("ngonNgu"));
         colTheLoai.setCellValueFactory(new PropertyValueFactory<>("tenLoaiTL"));
         colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
-
-        tableViewKetQua.setItems(taiLieuList);
         tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+    }
+
+    public void traCuu(){
+        String tuKhoa = tfTuKhoa.getText();
+        taiLieuList.clear();
+        taiLieuList.addAll(TaiLieuDAO.timKiemTaiLieu(tuKhoa));
+        tableViewKetQua.setItems(taiLieuList);
+        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     // Thêm phương thức getTableViewKetQua

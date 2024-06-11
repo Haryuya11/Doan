@@ -4,6 +4,8 @@ import com.doan.models.BanSao;
 import com.doan.utils.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +20,12 @@ public class BanSaoDAO {
             stmt.setNString(2, trangThai);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.isBeforeFirst()) {
-                    System.out.println("Không tìm thấy bản sao nào.");
+//                    System.out.println("Không tìm thấy bản sao nào.");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Lỗi");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Không tìm thấy bản sao nào.");
+                    alert.showAndWait();
                 } else while (rs.next()) {
                     BanSao banSao = new BanSao();
                     banSao.setMaTaiLieu(rs.getString("MATL"));

@@ -44,11 +44,16 @@ public class TaiLieuQuaHanController implements Initializable {
         colTenTaiLieu.setCellValueFactory(new PropertyValueFactory<>("tenTaiLieu"));
         colHanTra.setCellValueFactory(new PropertyValueFactory<>("hanTra"));
         colSoNgayQuaHan.setCellValueFactory(new PropertyValueFactory<>("soNgayQuaHan"));
-        tableViewKetQua.setItems(taiLieuQuaHanList);
         tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
     }
 
+    public void loadData() {
+        taiLieuQuaHanList.clear();
+        taiLieuQuaHanList.addAll(TaiLieuDAO.taiLieuQuaHan());
+        tableViewKetQua.setItems(taiLieuQuaHanList);
+        tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
 
     public TableView<TaiLieuQuaHan> getTableViewKetQua() {
         return tableViewKetQua;

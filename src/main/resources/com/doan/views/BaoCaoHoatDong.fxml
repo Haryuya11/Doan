@@ -17,14 +17,15 @@
         <TextField fx:id="tfMa" />
 
         <VBox fx:id="toggleGroup">
-            <RadioButton fx:id="rbNguoiMuon" text="Người mượn" selected="true" />
+            <RadioButton fx:id="rbTatCa" text="Tất cả" selected="true" />
+            <RadioButton fx:id="rbNguoiMuon" text="Người mượn"/>
             <RadioButton fx:id="rbNhanVien" text="Nhân viên" />
         </VBox>
 
-        <Button fx:id="btnBaoCaoHoatDong" text="Xem Báo Cáo" />
-    </HBox>
+            <Button fx:id="btnBaoCao" text="Xem Báo Cáo" />
+        </HBox>
 
-    <TableView fx:id="tableViewBaoCaoHoatDong">
+    <TableView fx:id="tableViewKetQua">
         <columns>
             <TableColumn text="Mã Nhân Viên" fx:id="colMaNhanVien"/>
             <TableColumn text="Tên Nhân Viên" fx:id="colTenNhanVien" />

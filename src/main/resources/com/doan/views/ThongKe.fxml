@@ -8,17 +8,18 @@
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.ThongKeTaiLieuTheoTheLoaiController">
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doan.controllers.ThongKeController">
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
 
-    <Label text="Thống Kê Tài Liệu Theo Thể Loại" style="-fx-font-size: 24;"/>
+    <Label text="Thống Kê" style="-fx-font-size: 24;"/>
 
     <HBox spacing="10">
-        <Button fx:id="btnThongKe" text="Thống kê" />
+        <Button fx:id="btnThongKeTatCaTL" text="Thống kê tất cả tài liệu" />
+        <Button fx:id="btnThongKeTLMuon" text="Thống kê tài liệu được mượn" />
     </HBox>
     <TableView fx:id="tableViewKetQua">
         <columns>
-            <TableColumn text="Thể Loại" fx:id="colTenLoai"/>
+            <TableColumn text="Thể Loại" fx:id="colTenLoai" />
             <TableColumn text="Số Lượng" fx:id="colSoLuong"/>
         </columns>
     </TableView>

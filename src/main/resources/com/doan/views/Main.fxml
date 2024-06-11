@@ -26,11 +26,10 @@
 
     <HBox spacing="20">
         <Button text="Tra Cứu Tài Liệu" onAction="#handleThongTinTaiLieu" style="-fx-font-size: 16; padding: 10px 20px;"/>
-        <Button text="Thông Tin Bản Sao" onAction="#handleThongTinBanSao" style="-fx-font-size: 16; padding: 10px 20px;"/>
+        <Button text="Tra Cứu Bản Sao" onAction="#handleThongTinBanSao" style="-fx-font-size: 16; padding: 10px 20px;"/>
         <Button text="Mượn/Trả Tài Liệu" onAction="#handleMuonTraTaiLieu" style="-fx-font-size: 16; padding: 10px 20px;"/>
         <Button text="Tài liệu quá hạn" onAction="#handleTaiLieuQuaHan" style="-fx-font-size: 16; padding: 10px 20px;"/>
-        <Button text="Thống kê mượn theo thể loại" onAction="#handleThongKeMuonTheoLoai" style="-fx-font-size: 16; padding: 10px 20px;"/>
-        <Button text="Thông kê tài liệu theo thể loại" onAction="#handleThongKeTaiLieuTheoTheLoai" style="-fx-font-size: 16; padding: 10px 20px;"/>
+        <Button text="Thống kê" onAction="#handleThongKe" style="-fx-font-size: 16; padding: 10px 20px;"/>
         <Button text="Báo cáo hoạt động" onAction="#handleBaoCaoHoatDong" style="-fx-font-size: 16; padding: 10px 20px;"/>
     </HBox>
 
