@@ -67,7 +67,7 @@ public class TaiLieuDAO {
                     taiLieuQuaHan.setMaSo(rs.getString("MASO"));
                     taiLieuQuaHan.setHoTen(rs.getString("HOTEN"));
                     taiLieuQuaHan.setMaTaiLieu(rs.getString("MATL"));
-                    taiLieuQuaHan.setTenTaiLieu(rs.getString("TENTL"));
+                    taiLieuQuaHan.setMaBanSao(rs.getString("MABANS"));
                     taiLieuQuaHan.setHanTra(rs.getDate("HANTRA").toLocalDate().toString());
                     taiLieuQuaHan.setSoNgayQuaHan(rs.getInt("SoNgayQuaHan"));
                     ketQua.add(taiLieuQuaHan);

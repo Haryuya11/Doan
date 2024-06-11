@@ -35,7 +35,7 @@ public class LichSuNguoiMuonController implements Initializable {
     TableColumn<PhieuMuon, String> colHanTra;
     @FXML
     TableColumn<PhieuMuon, String> colNgayTra;
-    private ObservableList<PhieuMuon> phieuMuonList = FXCollections.observableArrayList();
+    private final ObservableList<PhieuMuon> phieuMuonList = FXCollections.observableArrayList();
     private MainController mainController;
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -64,6 +64,14 @@ public class LichSuNguoiMuonController implements Initializable {
         // Hiển thị kết quả lên table view
         if(tinhTrang.equals("Tất cả")){
             tinhTrang = null;
+        }
+        if(maSo.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng nhập mã số.");
+            alert.showAndWait();
+            return;
         }
         phieuMuonList.clear();
         phieuMuonList.addAll(NguoiMuonDAO.lichSuMuonSachCuaNguoiMuon(maSo, tinhTrang));

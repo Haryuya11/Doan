@@ -22,7 +22,7 @@
             <TableColumn text="Mã Số" fx:id="colMaSo"/>
             <TableColumn text="Họ Tên" fx:id="colHoTen"/>
             <TableColumn text="Mã Tài Liệu" fx:id="colMaTaiLieu"/>
-            <TableColumn text="Tên Tài Liệu" fx:id="colTenTaiLieu"/>
+            <TableColumn text="Mã Bản Sao" fx:id="colMaBanSao"/>
             <TableColumn text="Hạn Trả" fx:id="colHanTra"/>
             <TableColumn text="Số Ngày Quá Hạn" fx:id="colSoNgayQuaHan"/>
         </columns>

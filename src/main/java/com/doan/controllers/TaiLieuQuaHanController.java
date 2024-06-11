@@ -24,7 +24,7 @@ public class TaiLieuQuaHanController implements Initializable {
     @FXML
     private TableColumn<TaiLieuQuaHan, String> colMaTaiLieu;
     @FXML
-    private TableColumn<TaiLieuQuaHan, String> colTenTaiLieu;
+    private TableColumn<TaiLieuQuaHan, String> colMaBanSao;
     @FXML
     private TableColumn<TaiLieuQuaHan, String> colHanTra;
     @FXML
@@ -39,7 +39,7 @@ public class TaiLieuQuaHanController implements Initializable {
         colMaSo.setCellValueFactory(new PropertyValueFactory<>("maSo"));
         colHoTen.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         colMaTaiLieu.setCellValueFactory(new PropertyValueFactory<>("maTaiLieu"));
-        colTenTaiLieu.setCellValueFactory(new PropertyValueFactory<>("tenTaiLieu"));
+        colMaBanSao.setCellValueFactory(new PropertyValueFactory<>("maBanSao"));
         colHanTra.setCellValueFactory(new PropertyValueFactory<>("hanTra"));
         colSoNgayQuaHan.setCellValueFactory(new PropertyValueFactory<>("soNgayQuaHan"));
         tableViewKetQua.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

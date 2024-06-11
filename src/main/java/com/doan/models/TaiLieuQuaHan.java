@@ -9,7 +9,7 @@ public class TaiLieuQuaHan {
     private StringProperty maSo;
     private StringProperty hoTen;
     private StringProperty maTaiLieu;
-    private StringProperty tenTaiLieu;
+    private StringProperty maBanSao;
     private StringProperty hanTra;
     private IntegerProperty soNgayQuaHan;
 
@@ -18,7 +18,7 @@ public class TaiLieuQuaHan {
         this.maSo = new SimpleStringProperty();
         this.hoTen = new SimpleStringProperty();
         this.maTaiLieu = new SimpleStringProperty();
-        this.tenTaiLieu = new SimpleStringProperty();
+        this.maBanSao = new SimpleStringProperty();
         this.hanTra = new SimpleStringProperty();
         this.soNgayQuaHan = new SimpleIntegerProperty();
     }
@@ -33,8 +33,8 @@ public class TaiLieuQuaHan {
     public String getMaTaiLieu() { return maTaiLieu.get(); }
     public void setMaTaiLieu(String maTaiLieu) { this.maTaiLieu.set(maTaiLieu); }
 
-    public String getTenTaiLieu() { return tenTaiLieu.get(); }
-    public void setTenTaiLieu(String tenTaiLieu) { this.tenTaiLieu.set(tenTaiLieu); }
+    public String getMaBanSao() { return maBanSao.get(); }
+    public void setMaBanSao(String maBanSao) { this.maBanSao.set(maBanSao); }
 
     public String getHanTra() { return hanTra.get(); }
     public void setHanTra(String hanTra) { this.hanTra.set(hanTra); }
@@ -46,7 +46,7 @@ public class TaiLieuQuaHan {
     public StringProperty getMaSoProperty() { return maSo; }
     public StringProperty getHoTenProperty() { return hoTen; }
     public StringProperty getMaTaiLieuProperty() { return maTaiLieu; }
-    public StringProperty getTenTaiLieuProperty() { return tenTaiLieu; }
+    public StringProperty getMaBanSaoProperty() { return maBanSao; }
     public StringProperty getHanTraProperty() { return hanTra; }
     public IntegerProperty getSoNgayQuaHanProperty() { return soNgayQuaHan; }
 }
