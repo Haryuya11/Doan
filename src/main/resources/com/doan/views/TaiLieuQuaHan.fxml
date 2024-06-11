@@ -15,7 +15,7 @@
     <Label text="Tài Liệu Quá Hạn" style="-fx-font-size: 24;"/>
 
     <HBox spacing="10">
-        <Button fx:id="btnTraCuu" text="Tra cứu" onAction="#traCuu"/>
+        <Button fx:id="btnTimKiem" text="Tìm kiếm" onAction="#timKiem"/>
     </HBox>
     <TableView fx:id="tableViewKetQua">
         <columns>

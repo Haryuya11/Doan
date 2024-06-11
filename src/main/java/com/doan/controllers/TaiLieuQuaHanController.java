@@ -1,7 +1,6 @@
 package com.doan.controllers;
 
 import com.doan.dao.TaiLieuDAO;
-import com.doan.models.TaiLieu;
 import com.doan.models.TaiLieuQuaHan;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,7 +47,7 @@ public class TaiLieuQuaHanController implements Initializable {
     }
 
     @FXML
-    private void traCuu() {
+    private void timKiem() {
         taiLieuQuaHanList.clear();
         taiLieuQuaHanList.addAll(TaiLieuDAO.taiLieuQuaHan());
         tableViewKetQua.setItems(taiLieuQuaHanList);

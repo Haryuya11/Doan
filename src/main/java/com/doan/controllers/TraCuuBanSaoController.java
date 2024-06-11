@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.text.Normalizer;
 import java.util.ResourceBundle;
 
 public class TraCuuBanSaoController implements Initializable {
@@ -56,7 +55,7 @@ public class TraCuuBanSaoController implements Initializable {
     }
 
     @FXML
-    private void traCuu(){
+    private void timKiem(){
         String maTaiLieu = tfMaTaiLieu.getText();
         String trangThai = trangThaiComboBox.getValue();
         if(trangThai.equals("Tất cả")){

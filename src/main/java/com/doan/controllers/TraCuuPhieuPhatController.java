@@ -13,7 +13,7 @@ public class TraCuuPhieuPhatController {
     @FXML
     private TextField tfMaSo;
     @FXML
-    private Button btnTraCuu;
+    private Button btnTimKiem;
     @FXML
     private Label lblTongTienPhat;
     @FXML
@@ -26,7 +26,7 @@ public class TraCuuPhieuPhatController {
     }
 
     @FXML
-    private void handleTraCuu() {
+    private void timKiem() {
         String maSo = tfMaSo.getText().trim();
         if (maSo.isEmpty()) {
 

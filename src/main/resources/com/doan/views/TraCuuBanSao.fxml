@@ -18,7 +18,7 @@
     <HBox spacing="10">
         <TextField fx:id="tfMaTaiLieu" promptText="Nhập mã tài liệu" HBox.hgrow="ALWAYS"/>
         <ComboBox fx:id="trangThaiComboBox" promptText="Trạng thái" />
-        <Button fx:id="btnTimKiem" text="Tìm Kiếm" onAction="#traCuu"/>
+        <Button fx:id="btnTimKiem" text="Tìm Kiếm" onAction="#timKiem"/>
     </HBox>
 
     <TableView fx:id="tableViewKetQua">

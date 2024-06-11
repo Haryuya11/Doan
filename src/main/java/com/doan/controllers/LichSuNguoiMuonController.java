@@ -57,7 +57,7 @@ public class LichSuNguoiMuonController implements Initializable {
     }
 
     @FXML
-    private void traCuu() {
+    private void timKiem() {
         String maSo = tfMaSo.getText();
         String tinhTrang = tinhTrangComboBox.getValue();
         // Gọi hàm lichSuMuonSachCuaNguoiMuon từ NguoiMuonDAO

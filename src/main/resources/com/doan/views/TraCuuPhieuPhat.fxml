@@ -12,7 +12,7 @@
     <HBox spacing="10">
         <Label text="Mã số sinh viên:" />
         <TextField fx:id="tfMaSo" />
-        <Button fx:id="btnTraCuu" text="Tra Cứu" onAction="#handleTraCuu" />
+        <Button fx:id="btnTimKiem" text="Tìm kiếm" onAction="#timKiem" />
     </HBox>
 
     <Label fx:id="lblTongTienPhat" text="Tổng tiền phạt: 0 VND" style="-fx-font-size: 18;" />
